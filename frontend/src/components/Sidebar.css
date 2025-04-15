@@ -1,0 +1,23 @@
+.sidebar {
+  height: 100vh;
+  width: 230px;
+  background-color: var(--primary-color);
+  padding: 20px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  margin-bottom: 50px;
+}
+
+.logo {
+  width: 50px;
+}
+
+.sidebar-title {
+  vertical-align: middle;
+  color: var(--text-color);
+}

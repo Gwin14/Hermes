@@ -1,0 +1,27 @@
+.sidebar-button {
+  height: 40px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.sidebar-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.sidebar-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-left: 10px;
+  font-weight: lighter;
+}
