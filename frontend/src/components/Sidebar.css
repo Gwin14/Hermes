@@ -8,13 +8,13 @@
 .sidebar-header {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  /* justify-content: syapace-between; */
   margin-bottom: 20px;
   margin-bottom: 50px;
 }
 
 .logo {
-  width: 50px;
+  width: 70px;
 }
 
 .sidebar-title {
