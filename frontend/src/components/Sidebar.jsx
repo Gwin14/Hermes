@@ -9,6 +9,7 @@ import {
   CirclePlus,
   Calendar,
   ChartColumn,
+  LogOut,
 } from "lucide-react";
 
 export default function Sidebar() {
@@ -25,6 +26,10 @@ export default function Sidebar() {
       <SidebarButton Icon={ChartColumn} label="Redes sociais" />
       <SidebarButton Icon={User} label="Perfil" />
       <SidebarButton Icon={Settings} label="Configurações" />
+
+      <div className="sidebar-footer">
+        <SidebarButton Icon={LogOut} label="Sair" />
+      </div>
     </div>
   );
 }
