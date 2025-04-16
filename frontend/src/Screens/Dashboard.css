@@ -1,0 +1,37 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.subtitle {
+  font-weight: lighter;
+  color: var(--tertiary-color);
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: bolder;
+  color: var(--text-color);
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.legend {
+  font-weight: lighter;
+  color: var(--tertiary-color);
+  font-size: 12px;
+}
+
+.col-1 {
+  grid-column: span 1;
+}
+
+.col-2 {
+  grid-column: span 2;
+}
+
+.col-3 {
+  grid-column: span 3;
+}

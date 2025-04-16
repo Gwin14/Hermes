@@ -1,0 +1,28 @@
+.tabs {
+  width: fit-content;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.tab {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.tab.inactive {
+  background-color: transparent;
+  color: var(--tertiary-color);
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: var(--text-color);
+  cursor: default;
+}
