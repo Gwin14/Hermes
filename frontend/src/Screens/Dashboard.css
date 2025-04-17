@@ -22,6 +22,8 @@
   font-weight: lighter;
   color: var(--tertiary-color);
   font-size: 12px;
+  display: inline;
+  margin-right: 15px;
 }
 
 .col-1 {

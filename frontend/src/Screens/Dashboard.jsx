@@ -4,9 +4,11 @@ import Tabs from "../components/Tabs";
 import "./Dashboard.css";
 import { useState } from "react";
 import { Instagram, Linkedin, Facebook, Twitter } from "lucide-react";
+import Badge from "../components/Badge";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("Visão geral");
+  const [activePosts, setActivePosts] = useState("Todos");
 
   return (
     <div className="dashboard">
@@ -63,6 +65,53 @@ export default function Dashboard() {
         {activeTab === "Análise" && <p>Conteúdo da Análise</p>}
         {activeTab === "Calendário" && <p>Conteúdo do Calendário</p>}
         {activeTab === "Lista" && <p>Conteúdo da Lista</p>}
+      </div>
+
+      <Tabs
+        tabs={["Todos", "Publicados", "Agendados", "Rascunhos"]}
+        activeTab={activePosts}
+        setActiveTab={setActivePosts}
+      />
+      <div className="tab-content" style={{ padding: "20px" }}>
+        {activePosts === "Todos" && (
+          <section className="grid">
+            <CardWidget className="col-3">
+              <section
+                className="post-info"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+              >
+                <div>
+                  <Instagram color="#C13584" strokeWidth={1.5} />{" "}
+                  {/* Roxo/rosa do Instagram */}
+                  <Linkedin color="#0077B5" strokeWidth={1.5} />{" "}
+                  {/* Azul do LinkedIn */}
+                </div>
+                <Badge state="Publicado" />
+              </section>
+              <br />
+              <br />
+              <h2
+                className="title"
+                style={{ fontWeight: "normal", fontSize: "16px" }}
+              >
+                Lançamento do novo produto chegando! Fiquem ligados para
+                novidades incríveis.
+              </h2>
+              <p className="legend">120 likes</p>
+              <p className="legend">24 comentários</p>
+              <p className="legend">18 compartilhamentos</p>
+            </CardWidget>
+          </section>
+        )}
+
+        {activePosts === "Publicados" && <p>Conteúdo do Calendário</p>}
+        {activePosts === "Agendados" && <p>Conteúdo da Lista</p>}
+        {activePosts === "Rascunhos" && <p>Conteúdo da Lista</p>}
       </div>
     </div>
   );
