@@ -2,6 +2,7 @@ import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./Screens/Dashboard";
 import useAnimateElements from "./hooks/useAnimateElements";
+import Createpost from "./Screens/Createpost";
 
 function App() {
   useAnimateElements({ className: "card-widget", baseDelay: 0.1 });
@@ -14,7 +15,7 @@ function App() {
       </aside>
 
       <main>
-        <Dashboard />
+        <Createpost />
       </main>
     </div>
   );
