@@ -7,8 +7,9 @@ export default function Createpost() {
   const [activeTab, setActiveTab] = useState("Visão geral");
 
   return (
-    <div className="dashboard">
+    <div className="createpost" style={{ padding: "20px" }}>
       <h1 className="page-title">Criar postagem</h1>
+      <hr style={{ margin: "10px", opacity: "20%" }} />
       <section className="grid">
         <CardWidget className="col-2">
           {Array.from({ length: 6 }).map((_, index) => (

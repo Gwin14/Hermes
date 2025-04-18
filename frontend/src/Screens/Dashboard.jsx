@@ -3,8 +3,8 @@ import CardWidget from "../components/CardWidget";
 import Tabs from "../components/Tabs";
 import "./Dashboard.css";
 import { useState } from "react";
-import { Instagram, Linkedin, Facebook, Twitter } from "lucide-react";
 import Badge from "../components/Badge";
+import SocialIcon from "../components/SocialIcon";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("Visão geral");
@@ -40,14 +40,10 @@ export default function Dashboard() {
               <h3 className="subtitle">Redes conectadas</h3>
               <h2 className="title">100</h2>
               <p className="legend">
-                <Facebook color="#1877F2" strokeWidth={1.5} />{" "}
-                {/* Azul do Facebook */}
-                <Twitter color="#1DA1F2" strokeWidth={1.5} />{" "}
-                {/* Azul do Twitter */}
-                <Instagram color="#C13584" strokeWidth={1.5} />{" "}
-                {/* Roxo/rosa do Instagram */}
-                <Linkedin color="#0077B5" strokeWidth={1.5} />{" "}
-                {/* Azul do LinkedIn */}
+                <SocialIcon name="facebook" />
+                <SocialIcon name="twitter" />
+                <SocialIcon name="instagram" />
+                <SocialIcon name="linkedin" />
               </p>
             </CardWidget>
 
@@ -86,10 +82,8 @@ export default function Dashboard() {
                 }}
               >
                 <div>
-                  <Instagram color="#C13584" strokeWidth={1.5} />{" "}
-                  {/* Roxo/rosa do Instagram */}
-                  <Linkedin color="#0077B5" strokeWidth={1.5} />{" "}
-                  {/* Azul do LinkedIn */}
+                  <SocialIcon name="instagram" />
+                  <SocialIcon name="linkedin" />
                 </div>
                 <Badge state="Publicado" />
               </section>
