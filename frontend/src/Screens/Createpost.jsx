@@ -4,10 +4,17 @@ import CardWidget from "../components/CardWidget";
 import Tabs from "../components/Tabs";
 import "./CreatePost.css";
 import SocialIcon from "../components/SocialIcon";
+import Carousel from "../components/Carousel";
 
 export default function Createpost() {
   const [activeTab, setActiveTab] = useState("Visão geral");
   const [imagensPreview, setImagensPreview] = useState([]);
+  const [redes, setRedes] = useState([
+    "facebook",
+    "instagram",
+    "linkedin",
+    "twitter",
+  ]);
   const inputImagemRef = useRef();
 
   const handleImagemClick = () => {
@@ -77,25 +84,45 @@ export default function Createpost() {
           {imagensPreview.length > 0 && (
             <div className="image-preview">
               {imagensPreview.map((src, index) => (
-                <img className="post-image" key={index} src={src} alt={`imagem-${index}`} />
+                <img
+                  className="post-image"
+                  key={index}
+                  src={src}
+                  alt={`imagem-${index}`}
+                />
               ))}
             </div>
           )}
         </CardWidget>
 
         <div>
-          <Tabs
-            tabs={["Visão geral", "Análise", "Calendário", "Lista"]}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
-          <CardWidget className="col-1"></CardWidget>
+          <Tabs tabs={redes} activeTab={redes[0]} setActiveTab={setActiveTab} />
+          <CardWidget className="col-1">
+            <img
+              src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2lyYXNvbHxlbnwwfHwwfHx8MA%3D%3D"
+              alt=""
+              style={{
+                width: "50px",
+                height: "50px",
+                borderRadius: "50%",
+                objectFit: "cover",
+              }}
+            />
+            <p style={{ display: "inline", color: "var(--text-color)" }}>
+              @fotoessencia_
+            </p>
+            {imagensPreview.length > 0 && (
+              <div style={{ marginTop: "20px" }}>
+                <Carousel imagens={imagensPreview} />
+              </div>
+            )}
+          </CardWidget>
         </div>
 
         <CardWidget className="col-2">
           <p style={{ color: "white" }}>Redes sociais</p>
           <br />
-          {["facebook", "instagram", "linkedin", "twitter"].map((rede) => (
+          {redes.map((rede) => (
             <div key={rede} style={{ display: "flex", alignItems: "center" }}>
               <input className="social-checkbox" type="checkbox" />
               <SocialIcon name={rede} />
