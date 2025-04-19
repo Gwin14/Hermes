@@ -9,6 +9,7 @@ function App() {
   const [currentScreen, setCurrentScreen] = useState("Criar post");
   useAnimateElements({ className: "card-widget", baseDelay: 0.1 });
   useAnimateElements({ className: "sidebar-button", baseDelay: 0.05 });
+  useAnimateElements({ className: "media-button", baseDelay: 0.1 });
 
   const renderScreen = () => {
     switch (currentScreen) {

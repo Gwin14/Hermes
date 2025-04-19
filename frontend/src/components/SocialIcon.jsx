@@ -1,10 +1,27 @@
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Bold,
+  Italic,
+  Underline,
+  Link,
+  Smile,
+  Image,
+} from "lucide-react";
 
 const iconMap = {
   facebook: { Icon: Facebook, color: "#1877F2" },
   twitter: { Icon: Twitter, color: "#1DA1F2" },
   instagram: { Icon: Instagram, color: "#C13584" },
   linkedin: { Icon: Linkedin, color: "#0077B5" },
+  bold: { Icon: Bold, color: "#fff" },
+  italic: { Icon: Italic, color: "#fff" },
+  underline: { Icon: Underline, color: "#fff" },
+  link: { Icon: Link, color: "#fff" },
+  smile: { Icon: Smile, color: "#fff" },
+  image: { Icon: Image, color: "#fff" },
 };
 
 export default function SocialIcon({ name, size = 24, strokeWidth = 1.5 }) {

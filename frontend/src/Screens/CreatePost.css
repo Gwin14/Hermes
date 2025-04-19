@@ -1,0 +1,30 @@
+.media-button,
+.post-text {
+  background-color: var(--secondary-color);
+  border: none;
+  color: var(--text-color);
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-button:hover {
+  background-color: var(--tertiary-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease;
+}
+
+.post-text {
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+  resize: none;
+}
+
+.social-checkbox {
+  margin: 10px;
+}

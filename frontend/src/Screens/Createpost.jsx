@@ -1,7 +1,10 @@
+import "../App.css";
 import React from "react";
 import CardWidget from "../components/CardWidget";
 import Tabs from "../components/Tabs";
 import { useState } from "react";
+import "./CreatePost.css";
+import SocialIcon from "../components/SocialIcon";
 
 export default function Createpost() {
   const [activeTab, setActiveTab] = useState("Visão geral");
@@ -12,16 +15,29 @@ export default function Createpost() {
       <hr style={{ margin: "10px", opacity: "20%" }} />
       <section className="grid">
         <CardWidget className="col-2">
-          {Array.from({ length: 6 }).map((_, index) => (
-            <button key={index} style={{ margin: "10px" }}>
-              Botão {index + 1}
-            </button>
-          ))}
+          <button className="media-button">
+            <SocialIcon name="bold" />
+          </button>
+          <button className="media-button">
+            <SocialIcon name="italic" />
+          </button>
+          <button className="media-button">
+            <SocialIcon name="underline" />
+          </button>
+          <button className="media-button">
+            <SocialIcon name="link" />
+          </button>
+          <button className="media-button">
+            <SocialIcon name="smile" />
+          </button>
+          <button className="media-button">
+            <SocialIcon name="image" />
+          </button>
 
           <br />
 
           <textarea
-            style={{ width: "100%", height: "200px", marginTop: "10px" }}
+            className="post-text"
             name="text"
             id="text"
             placeholder="Escreva aqui..."
@@ -41,14 +57,34 @@ export default function Createpost() {
           <p style={{ color: "white" }}>Redes sociais</p>
           <br />
 
-          {Array.from({ length: 6 }).map((_, index) => (
-            <div>
-              <input type="checkbox" style={{ margin: "10px" }} />
-              <p style={{ display: "inline", color: "white" }}>
-                Rede {index + 1}
-              </p>
-            </div>
-          ))}
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <input className="social-checkbox" type="checkbox" />
+            <SocialIcon name="facebook" />
+            <p style={{ display: "inline", color: "white", marginLeft: "7px" }}>
+              Facebook
+            </p>
+          </div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <input className="social-checkbox" type="checkbox" />
+            <SocialIcon name="instagram" />
+            <p style={{ display: "inline", color: "white", marginLeft: "7px" }}>
+              Instagram
+            </p>
+          </div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <input className="social-checkbox" type="checkbox" />
+            <SocialIcon name="linkedin" />
+            <p style={{ display: "inline", color: "white", marginLeft: "7px" }}>
+              Linkedin
+            </p>
+          </div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <input className="social-checkbox" type="checkbox" />
+            <SocialIcon name="twitter" />
+            <p style={{ display: "inline", color: "white", marginLeft: "7px" }}>
+              Twitter
+            </p>
+          </div>
 
           <br />
         </CardWidget>

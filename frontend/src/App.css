@@ -3,6 +3,7 @@
   --secondary-color: #1f2937;
   --tertiary-color: #6b6c6d;
   --background-color: #030712;
+  --accent-color: #9333ea;
   --text-color: white;
   --font-family: "Arial", sans-serif;
 }
@@ -59,6 +60,34 @@ main {
 .card-widget {
   animation: pop 0.5s ease-in-out forwards;
   opacity: 0;
+}
+
+.media-button {
+  animation: pop 0.5s ease-in-out forwards;
+  opacity: 0;
+}
+
+:root {
+  --cor-destaque: #9333ea; /* Roxo personalizado */
+}
+
+/* INPUTS E TEXTAREAS FOCADOS */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--cor-destaque);
+  border-color: var(--cor-destaque);
+}
+
+/* CHECKBOX SELECIONADO */
+input[type="checkbox"]:checked {
+  accent-color: var(--cor-destaque); /* Compatível com navegadores modernos */
+}
+
+/* TEXTO SELECIONADO */
+::selection {
+  background: var(--cor-destaque);
+  color: white;
 }
 
 @keyframes fade-in {
