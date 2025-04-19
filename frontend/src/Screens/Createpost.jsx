@@ -1,13 +1,35 @@
 import "../App.css";
-import React from "react";
+import React, { useState, useRef } from "react";
 import CardWidget from "../components/CardWidget";
 import Tabs from "../components/Tabs";
-import { useState } from "react";
 import "./CreatePost.css";
 import SocialIcon from "../components/SocialIcon";
 
 export default function Createpost() {
   const [activeTab, setActiveTab] = useState("Visão geral");
+  const [imagensPreview, setImagensPreview] = useState([]);
+  const inputImagemRef = useRef();
+
+  const handleImagemClick = () => {
+    inputImagemRef.current.click();
+  };
+
+  const handleImagemChange = (event) => {
+    const arquivos = Array.from(event.target.files);
+    const novasImagens = [];
+
+    arquivos.forEach((arquivo) => {
+      const leitor = new FileReader();
+      leitor.onload = () => {
+        novasImagens.push(leitor.result);
+        // Quando terminar de ler todos, atualiza o state
+        if (novasImagens.length === arquivos.length) {
+          setImagensPreview((prev) => [...prev, ...novasImagens]);
+        }
+      };
+      leitor.readAsDataURL(arquivo);
+    });
+  };
 
   return (
     <div className="createpost" style={{ padding: "20px" }}>
@@ -30,9 +52,18 @@ export default function Createpost() {
           <button className="media-button">
             <SocialIcon name="smile" />
           </button>
-          <button className="media-button">
+          <button className="media-button" onClick={handleImagemClick}>
             <SocialIcon name="image" />
           </button>
+
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            ref={inputImagemRef}
+            onChange={handleImagemChange}
+            style={{ display: "none" }}
+          />
 
           <br />
 
@@ -42,6 +73,14 @@ export default function Createpost() {
             id="text"
             placeholder="Escreva aqui..."
           ></textarea>
+
+          {imagensPreview.length > 0 && (
+            <div className="image-preview">
+              {imagensPreview.map((src, index) => (
+                <img className="post-image" key={index} src={src} alt={`imagem-${index}`} />
+              ))}
+            </div>
+          )}
         </CardWidget>
 
         <div>
@@ -56,36 +95,17 @@ export default function Createpost() {
         <CardWidget className="col-2">
           <p style={{ color: "white" }}>Redes sociais</p>
           <br />
-
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <input className="social-checkbox" type="checkbox" />
-            <SocialIcon name="facebook" />
-            <p style={{ display: "inline", color: "white", marginLeft: "7px" }}>
-              Facebook
-            </p>
-          </div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <input className="social-checkbox" type="checkbox" />
-            <SocialIcon name="instagram" />
-            <p style={{ display: "inline", color: "white", marginLeft: "7px" }}>
-              Instagram
-            </p>
-          </div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <input className="social-checkbox" type="checkbox" />
-            <SocialIcon name="linkedin" />
-            <p style={{ display: "inline", color: "white", marginLeft: "7px" }}>
-              Linkedin
-            </p>
-          </div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <input className="social-checkbox" type="checkbox" />
-            <SocialIcon name="twitter" />
-            <p style={{ display: "inline", color: "white", marginLeft: "7px" }}>
-              Twitter
-            </p>
-          </div>
-
+          {["facebook", "instagram", "linkedin", "twitter"].map((rede) => (
+            <div key={rede} style={{ display: "flex", alignItems: "center" }}>
+              <input className="social-checkbox" type="checkbox" />
+              <SocialIcon name={rede} />
+              <p
+                style={{ display: "inline", color: "white", marginLeft: "7px" }}
+              >
+                {rede.charAt(0).toUpperCase() + rede.slice(1)}
+              </p>
+            </div>
+          ))}
           <br />
         </CardWidget>
       </section>
