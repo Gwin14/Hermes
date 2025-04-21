@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Importe o useNavigate
 import CardWidget from "../components/CardWidget";
 import "./LoginRegister.css";
 import "../App.css";
@@ -7,39 +8,54 @@ export default function LoginRegister({ login = "login" }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  
+  const navigate = useNavigate(); // Hook para navegação
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     const url = login === "login" 
-      ? "http://localhost:8000/auth/api/token/"  // Endpoint para login
-      : "http://localhost:8000/auth/api/register/"; // Endpoint para registro
+      ? "http://localhost:8000/auth/api/token/"
+      : "http://localhost:8000/auth/api/register/";
 
-    const res = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    });
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-    const data = await res.json();
-    if (res.ok) {
-      if (login === "login") {
-        // Armazenar os tokens no localStorage
-        localStorage.setItem("access", data.access);
-        localStorage.setItem("refresh", data.refresh);
-        setMessage("Login bem-sucedido!");
+      const data = await res.json();
+      if (res.ok) {
+        if (login === "login") {
+          localStorage.setItem("access", data.access);
+          localStorage.setItem("refresh", data.refresh);
+          setMessage("Login bem-sucedido!");
+          navigate("/"); // Redireciona para a página inicial após login
+        } else {
+          setMessage("Cadastro realizado com sucesso! Agora, faça login.");
+          navigate("/login"); // Redireciona para a página de login após registro
+        }
       } else {
-        setMessage("Cadastro realizado com sucesso! Agora, faça login.");
+        setMessage(data.error || "Algo deu errado!");
       }
+    } catch (error) {
+      setMessage("Erro de conexão com o servidor");
+    }
+  };
+
+  // Função para alternar entre login e registro
+  const toggleAuthMode = () => {
+    if (login === "login") {
+      navigate("/registrar");
     } else {
-      setMessage(data.error || "Algo deu errado!");
+      navigate("/login");
     }
   };
 
   return (
-    <section className="grid">
+    <section className="login-register-screen">
       <CardWidget className="col-3">
         <div className="login-register-container">
           <h1 className="page-title">
@@ -68,13 +84,13 @@ export default function LoginRegister({ login = "login" }) {
               {login === "login" ? "Entrar" : "Registrar"}
             </button>
             <hr style={{ opacity: 0.3 }} />
-            <p className="change-form">
+            <p className="change-form" onClick={toggleAuthMode} style={{ cursor: "pointer" }}>
               {login === "login"
                 ? "Não tem uma conta? Cadastre-se"
                 : "Já possui uma conta? Entre"}
             </p>
           </form>
-          {message && <p>{message}</p>}
+          {message && <p className="message">{message}</p>}
         </div>
       </CardWidget>
 

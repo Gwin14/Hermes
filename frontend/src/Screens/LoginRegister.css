@@ -1,11 +1,12 @@
-/* .grid {
+.login-register-screen {
   width: 60%;
   min-width: 450px;
-  max-width: 800px;
+  max-width: 600px;
   margin: auto;
-} */
+  margin-top: 25vh;
+}
 
-/* body {
+/* .body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,6 +83,6 @@ input[type="password"] {
   font-weight: bolder;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scaleY(1.4); /* Stretch the text vertically */
+  transform: translate(-50%, -60%) scaleY(1.4); /* Stretch the text vertically */
   font-family: "Impact", "Haettenschweiler", "Arial Narrow Bold", sans-serif;
 }
