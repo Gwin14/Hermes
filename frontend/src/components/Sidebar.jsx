@@ -2,6 +2,7 @@ import "../App.css";
 import "./Sidebar.css";
 import logo from "../assets/logo.png";
 import SidebarButton from "./SidebarButton";
+import { Link } from "react-router-dom"; // Importar o Link para navegação
 import {
   Home,
   Settings,
@@ -12,7 +13,7 @@ import {
   LogOut,
 } from "lucide-react";
 
-export default function Sidebar({ onSelect }) {
+export default function Sidebar() {
   return (
     <div className="sidebar">
       <section className="sidebar-header">
@@ -20,43 +21,29 @@ export default function Sidebar({ onSelect }) {
         <h2 className="sidebar-title">Hermes</h2>
       </section>
 
-      <SidebarButton
-        Icon={Home}
-        label="Dashboard"
-        onClick={() => onSelect("Dashboard")}
-      />
-      <SidebarButton
-        Icon={CirclePlus}
-        label="Criar post"
-        onClick={() => onSelect("Criar post")}
-      />
-      <SidebarButton
-        Icon={Calendar}
-        label="Agendamento"
-        onClick={() => onSelect("Agendamento")}
-      />
-      <SidebarButton
-        Icon={ChartColumn}
-        label="Redes sociais"
-        onClick={() => onSelect("Redes sociais")}
-      />
-      <SidebarButton
-        Icon={User}
-        label="Perfil"
-        onClick={() => onSelect("Perfil")}
-      />
-      <SidebarButton
-        Icon={Settings}
-        label="Configurações"
-        onClick={() => onSelect("Configurações")}
-      />
+      <Link to="/" className="sidebar-link">
+        <SidebarButton Icon={Home} label="Dashboard" />
+      </Link>
+      <Link to="/criar-post" className="sidebar-link">
+        <SidebarButton Icon={CirclePlus} label="Criar post" />
+      </Link>
+      <Link to="/agendamento" className="sidebar-link">
+        <SidebarButton Icon={Calendar} label="Agendamento" />
+      </Link>
+      <Link to="/redes-sociais" className="sidebar-link">
+        <SidebarButton Icon={ChartColumn} label="Redes sociais" />
+      </Link>
+      <Link to="/perfil" className="sidebar-link">
+        <SidebarButton Icon={User} label="Perfil" />
+      </Link>
+      <Link to="/configuracoes" className="sidebar-link">
+        <SidebarButton Icon={Settings} label="Configurações" />
+      </Link>
 
       <div className="sidebar-footer">
-        <SidebarButton
-          Icon={LogOut}
-          label="Sair"
-          onClick={() => onSelect("Sair")}
-        />
+        <Link to="/sair" className="sidebar-link">
+          <SidebarButton Icon={LogOut} label="Sair" />
+        </Link>
       </div>
     </div>
   );
