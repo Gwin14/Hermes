@@ -9,6 +9,9 @@ import {
   Link,
   Smile,
   Image,
+  Heart,
+  MessageCircle,
+  Bookmark,
 } from "lucide-react";
 
 const iconMap = {
@@ -22,6 +25,9 @@ const iconMap = {
   link: { Icon: Link, color: "#fff" },
   smile: { Icon: Smile, color: "#fff" },
   image: { Icon: Image, color: "#fff" },
+  heart: { Icon: Heart, color: "#fff" },
+  messagecircle: { Icon: MessageCircle, color: "#fff" },
+  bookmark: { Icon: Bookmark, color: "#fff" },
 };
 
 export default function SocialIcon({ name, size = 24, strokeWidth = 1.5 }) {

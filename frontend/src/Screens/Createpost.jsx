@@ -9,9 +9,10 @@ import Carousel from "../components/Carousel";
 export default function Createpost() {
   const [activeTab, setActiveTab] = useState("Visão geral");
   const [imagensPreview, setImagensPreview] = useState([]);
+  const [textoPost, setTextoPost] = useState("");
   const [redes, setRedes] = useState([
-    "facebook",
     "instagram",
+    "facebook",
     "linkedin",
     "twitter",
   ]);
@@ -29,7 +30,6 @@ export default function Createpost() {
       const leitor = new FileReader();
       leitor.onload = () => {
         novasImagens.push(leitor.result);
-        // Quando terminar de ler todos, atualiza o state
         if (novasImagens.length === arquivos.length) {
           setImagensPreview((prev) => [...prev, ...novasImagens]);
         }
@@ -79,6 +79,8 @@ export default function Createpost() {
             name="text"
             id="text"
             placeholder="Escreva aqui..."
+            value={textoPost}
+            onChange={(e) => setTextoPost(e.target.value)}
           ></textarea>
 
           {imagensPreview.length > 0 && (
@@ -108,13 +110,37 @@ export default function Createpost() {
                 objectFit: "cover",
               }}
             />
-            <p style={{ display: "inline", color: "var(--text-color)" }}>
-              @fotoessencia_
+            <p className="account-name">
+              @fotoessencia_<span style={{ opacity: 0.5 }}> • Agora mesmo</span>
             </p>
-            {imagensPreview.length > 0 && (
+
+            {(textoPost || imagensPreview.length > 0) && (
               <div style={{ marginTop: "20px" }}>
-                <Carousel imagens={imagensPreview} />
+                {imagensPreview.length > 0 && (
+                  <Carousel imagens={imagensPreview} />
+                )}
               </div>
+            )}
+
+            <section className="interaction-icons">
+              <div style={{ display: "flex", gap: "15px" }}>
+                <SocialIcon name="heart" size={"30px"} />
+                <SocialIcon name="messagecircle" size={"30px"} />
+              </div>
+              <SocialIcon name="bookmark" size={"30px"} />
+            </section>
+
+            {textoPost && (
+              <p
+                style={{
+                  color: "white",
+                  marginBottom: "10px",
+                  whiteSpace: "pre-wrap",
+                  marginTop: "10px",
+                }}
+              >
+                {textoPost}
+              </p>
             )}
           </CardWidget>
         </div>
