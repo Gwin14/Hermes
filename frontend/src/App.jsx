@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import Dashboard from "./Screens/Dashboard";
 import Createpost from "./Screens/Createpost";
 import useAnimateElements from "./hooks/useAnimateElements";
+import LoginRegister from "./Screens/LoginRegister";
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("Criar post");
@@ -24,13 +25,14 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <aside>
-        <Sidebar onSelect={setCurrentScreen} />
-      </aside>
+    // <div className="app-container">
+    //   <aside>
+    //     <Sidebar onSelect={setCurrentScreen} />
+    //   </aside>
 
-      <main>{renderScreen()}</main>
-    </div>
+    //   <main>{renderScreen()}</main>
+    // </div>
+    <LoginRegister />
   );
 }
 

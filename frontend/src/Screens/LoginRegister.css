@@ -1,0 +1,87 @@
+.grid {
+  width: 60%;
+  min-width: 450px;
+  max-width: 800px;
+  margin: auto;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="text"],
+input[type="password"] {
+  background-color: var(--secondary-color);
+  border: none;
+  color: var(--text-color);
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  margin-right: 10px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0px;
+  width: 100%;
+  border: 1px solid var(--tertiary-color);
+}
+
+.login-register-button {
+  background-color: var(--accent-color);
+  border: none;
+  color: var(--text-color);
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 15px 0px;
+}
+
+.login-register-button:hover {
+  box-shadow: 0px 0px 10px var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.forgot-password,
+.change-form {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+  text-align: right;
+  margin: 15px 0px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.change-form {
+  text-align: center;
+}
+
+.forgot-password:hover,
+.change-form:hover {
+  opacity: 1;
+  text-decoration: underline;
+  transition: opacity 0.3s ease;
+}
+
+.HERMES {
+  color: var(--text-color);
+  font-size: 25rem;
+  text-align: center;
+  position: fixed;
+  z-index: -1;
+  opacity: 0.05;
+  font-weight: bolder;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scaleY(1.4); /* Stretch the text vertically */
+  font-family: "Impact", "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+}

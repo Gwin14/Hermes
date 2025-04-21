@@ -12,6 +12,8 @@ import {
   Heart,
   MessageCircle,
   Bookmark,
+  AtSign,
+  Lock,
 } from "lucide-react";
 
 const iconMap = {
@@ -28,6 +30,8 @@ const iconMap = {
   heart: { Icon: Heart, color: "#fff" },
   messagecircle: { Icon: MessageCircle, color: "#fff" },
   bookmark: { Icon: Bookmark, color: "#fff" },
+  atsign: { Icon: AtSign, color: "#fff" },
+  lock: { Icon: Lock, color: "#fff" },
 };
 
 export default function SocialIcon({ name, size = 24, strokeWidth = 1.5 }) {
