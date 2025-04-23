@@ -5,11 +5,13 @@ import Tabs from "../components/Tabs";
 import "./CreatePost.css";
 import SocialIcon from "../components/SocialIcon";
 import Carousel from "../components/Carousel";
+import axios from "axios"; // Importando axios para fazer requisições
 
-export default function Createpost() {
+export default function CreatePost() {
   const [activeTab, setActiveTab] = useState("Visão geral");
   const [imagensPreview, setImagensPreview] = useState([]);
   const [textoPost, setTextoPost] = useState("");
+  const [estilo, setEstilo] = useState(""); // Estado para estilo
   const [redes, setRedes] = useState([
     "instagram",
     "facebook",
@@ -38,6 +40,39 @@ export default function Createpost() {
     });
   };
 
+  // Função para melhorar o texto
+  const melhorarTexto = async () => {
+    try {
+      const prompt = `Transforme a descrição em algo mais sólido, mas mantendo a essência: "${textoPost}", no estilo ${estilo}. Quero apenas a frase melhorada, sem explicações, sem aspas.`;
+      const response = await axios.post(
+        "https://openrouter.ai/api/v1/chat/completions",
+        {
+          model: "deepseek/deepseek-chat-v3-0324:free",
+          messages: [{ role: "user", content: prompt }],
+        },
+        {
+          headers: {
+            Authorization: `Bearer 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`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        const fraseMelhorada = response.data.choices[0].message.content;
+        setTextoPost(fraseMelhorada); // Atualiza o estado com o texto melhorado
+      } else {
+        console.error(
+          "Erro ao melhorar o texto:",
+          response.status,
+          response.data
+        );
+      }
+    } catch (error) {
+      console.error("Erro na requisição:", error);
+    }
+  };
+
   return (
     <div className="createpost" style={{ padding: "20px" }}>
       <h1 className="page-title">Criar postagem</h1>
@@ -61,6 +96,9 @@ export default function Createpost() {
           </button>
           <button className="media-button" onClick={handleImagemClick}>
             <SocialIcon name="image" />
+          </button>
+          <button className="ia-button" onClick={melhorarTexto}>
+            <SocialIcon name="sparkle" />
           </button>
 
           <input

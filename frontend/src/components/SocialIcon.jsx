@@ -14,6 +14,7 @@ import {
   Bookmark,
   AtSign,
   Lock,
+  Sparkle
 } from "lucide-react";
 
 const iconMap = {
@@ -32,6 +33,7 @@ const iconMap = {
   bookmark: { Icon: Bookmark, color: "#fff" },
   atsign: { Icon: AtSign, color: "#fff" },
   lock: { Icon: Lock, color: "#fff" },
+  sparkle: { Icon: Sparkle, color: "#fff" }
 };
 
 export default function SocialIcon({ name, size = 24, strokeWidth = 1.5 }) {
