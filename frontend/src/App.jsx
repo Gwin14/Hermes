@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation, Navigate } from "r
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./Screens/Dashboard";
 import Createpost from "./Screens/Createpost";
+import ConnectSocialMedia from "./Screens/ConnectSocialMedia";
 import LoginRegister from "./Screens/LoginRegister";
 import useAnimateElements from "./hooks/useAnimateElements";
 import "./App.css";
@@ -36,12 +37,19 @@ function AppContent() {
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-          } />
+          } /> 
           <Route path="/criar-post" element={
             <ProtectedRoute>
               <Createpost />
             </ProtectedRoute>
           } />
+          <Route path="/redes-sociais" element={
+            <ProtectedRoute>
+              <ConnectSocialMedia />
+            </ProtectedRoute>
+          } />
+
+          
           
           {/* Rotas públicas */}
           <Route path="/login" element={<LoginRegister login="login" />} />
