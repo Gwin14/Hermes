@@ -3,6 +3,7 @@ import CardWidget from "../components/CardWidget";
 import SocialIcon from "../components/SocialIcon";
 import "../App.css";
 import "./ConnectSocialMedia.css";
+import ConnectSocialMediaButton from "../components/ConnectSocialMediaButton";
 
 export default function ConnectSocialMedia() {
   return (
@@ -64,6 +65,7 @@ export default function ConnectSocialMedia() {
           </div>
         </CardWidget>
       </section>
+      <ConnectSocialMediaButton />
     </div>
   );
 }
